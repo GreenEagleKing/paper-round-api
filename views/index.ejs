@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper Round</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <h1>Paper Round: </h1>
     <ul class="houseItems">
         <% for(let i=0; i < houses.length; i++) {%>
         <li class="house">
-            <span><%= houses[i].address%></span>
+            <% if(houses[i].delivered === true) {%>
+                <span class="delivered"><%= houses[i].address %></span>
+            <% }else{ %>
+            <span><%= houses[i].address %></span>
+            <% } %>
             <span class='fa fa-trash'></span>
         </li>
         <% } %>

@@ -11,9 +11,9 @@ Array.from(house).forEach((element) => {
     element.addEventListener('click', markDelivered)
 })
 
-// Array.from(paperDelivered).forEach((element) => {
-//     element.addEventListener('click', markUndelivered)
-// })
+Array.from(paperDelivered).forEach((element) => {
+    element.addEventListener('click', markUnDelivered)
+})
 
 async function deleteItem(){
     const addressText = this.parentNode.childNodes[1].innerText
@@ -48,6 +48,25 @@ async function markDelivered() {
         console.log(data)
         location.reload()
     } catch(err){
+        console.log(err)
+    }
+}
+
+async function markUnDelivered() {
+    const addressText = this.parentNode.childNodes[1].innerText
+    try{
+        const response = await fetch ('markUnDelivered', {
+            method: 'put',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'addressFromJS' : addressText
+            })
+        })
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+
+    } catch(error){
         console.log(err)
     }
 }

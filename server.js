@@ -1,3 +1,4 @@
+const { request } = require('express')
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
@@ -34,7 +35,7 @@ app.post('/addHouse', (request, response) => {
 })
 
 app.delete('/deleteItem', (request, response) => {
-    db.collection('round').deleteOne({houses: request.body.addressFromJS})
+    db.collection('round').deleteOne({address: request.body.addressFromJS})
     .then(result => {
         console.log('Address Deleted')
         response.json('Address Deleted')
@@ -56,7 +57,22 @@ app.put('/markDelivered', (request, response) => {
         response.json('Marked Delivered')
     })
     .catch(error => console.error(error))
+})
 
+app.put('/markUnDelivered', (request, response) => {
+    db.collection('round').updateOne({address: request.body.addressFromJS}, {
+        $set: {
+            delivered: false
+        }
+    }, {
+        sort: {_id: -1},
+        upsert: false
+    })
+    .then(result => {
+        console.log('Marked Undelivered')
+        response.json('Marked Undelivered')
+    })
+    .catch(error => console.error(error))
 })
 
 app.listen(process.env.PORT || PORT, () => {

@@ -22,8 +22,12 @@ app.use(express.json())
 
 app.get('/', async (request, response) => {
     const houseItems = await db.collection('round').find().toArray()
-    response.render('index.ejs', { houses : houseItems})
+    const deliveriesLeft = await db.collection('round').countDocuments({delivered: false})
+    response.render('index.ejs', { houses : houseItems, remainingDeliveries: deliveriesLeft,})
+    
 })
+
+
 
 app.post('/addHouse', (request, response) => {
     db.collection('round').insertOne({address: request.body.house, newspaper: request.body.paper, delivered: false})

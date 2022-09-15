@@ -9,24 +9,43 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Paper Round: </h1>
+    <h1>Paper Round</h1>
+    <h2 id="date"></h2>
     <ul class="houseItems">
         <% for(let i=0; i < houses.length; i++) {%>
         <li class="house">
             <% if(houses[i].delivered === true) {%>
                 <span class="delivered"><%= houses[i].address %></span>
+                <span class="delivered"><%= houses[i].newspaper %></span>
             <% }else{ %>
             <span><%= houses[i].address %></span>
+            <span><%= houses[i].newspaper %></span>
             <% } %>
             <span class='fa fa-trash'></span>
-        </li>
+        </li>   
         <% } %>
     </ul>
 
+    <h2>Remaining Deliveries: <%= remainingDeliveries %></h2>
+    
+    <ul class="newspaperItems"> 
+    </ul>
+
+    <h3>Total Sunday Times papers:</h3>
+
     <h2>Add a House: </h2>
     <form action="/addHouse" method="POST">
-        <input type="text" placeholder="Paper" name="paper">
-        <input type="text" placeholder="New House" name="house">
+        <select class="newspapers"placeholder="Newspaper" name="paper">
+            <option value="The Sunday Times">The Sunday Times</option>
+            <option value="The Independent">The Independent</option>
+            <option value="Financial Times">Financial Times</option>
+            <option value="The Daily Telegraph">The Daily Telegraph</option>
+            <option value="The Times">The Times</option>
+            <option value="The Sun">The Sun</option>
+            <option value="The Guardian">The Guardian</option>
+            <option value="Daily Mirror">Daily Mirror</option>
+        </select>
+        <input type="text" placeholder="House Address" name="house">
         <input type="submit">
     </form>
 

@@ -1,7 +1,10 @@
 const deleteBtn = document.querySelectorAll('.fa-trash')
 const house = document.querySelectorAll('.house span')
-const paperDelivered = document.querySelectorAll('.house span.delivered')
+const paperDelivered = document.querySelectorAll('span.delivered')
+const papers = [...document.querySelectorAll('.paper')]
 
+// Updates h2 to todays date
+const date = document.querySelector('#date').innerText = new Date().toDateString()
 
 Array.from(deleteBtn).forEach((element) => {
     element.addEventListener('click', deleteItem)
@@ -14,6 +17,7 @@ Array.from(house).forEach((element) => {
 Array.from(paperDelivered).forEach((element) => {
     element.addEventListener('click', markUnDelivered)
 })
+
 
 async function deleteItem(){
     const addressText = this.parentNode.childNodes[1].innerText
@@ -70,3 +74,25 @@ async function markUnDelivered() {
         console.log(err)
     }
 }
+
+function countPapers() {
+    
+    const dataArr = []
+    for (let i = 0; i < papers.length; i++) {
+        dataArr.push(papers[i].innerText);
+    }
+    dataArr.reduce(function(a, b){
+        a[b] = a[b] + 1 || 1
+        return a;
+    }, {});
+    for (var c in dataArr) {
+        const spanLocation = document.querySelector('.newspaperItems')
+        const newElement = document.createElement('li');
+        newElement.id = dataArr[c]; newElement.className = "newspaper";
+        newElement.innerHTML = dataArr[c];
+        spanLocation.appendChild(newElement);
+    } 
+}
+
+countPapers()
+

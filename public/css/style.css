@@ -1,5 +1,41 @@
+body {
+    font-family: "Abril Fatface", sans-serif;
+    font-size: 16px;
+    color: rgb(29, 28, 28);
+}
+
+p, ul, form, h3 {
+    font-family: "Raleway", sans-serif;
+    font-size: 14;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 h1{
-    color: red;
+    font-size: 80px;
+    margin: 2rem 0rem;
+}
+
+h2{
+    font-size: 30px;
+    margin: 1rem 0rem;
+}
+
+.explanation{
+    max-width: 30%;
+    line-height: 1.5rem;
+    text-align: center;
+}
+
+.features {
+    margin: 1rem;
 }
 
 .delivered{

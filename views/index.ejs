@@ -6,48 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper Round</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+    
 </head>
 <body>
-    <h1>Paper Round</h1>
-    <h2 id="date"></h2>
-    <ul class="houseItems">
-        <% for(let i=0; i < houses.length; i++) {%>
-        <li class="house">
-            <% if(houses[i].delivered === true) {%>
-                <span class="delivered"><%= houses[i].address %></span>
-                <span class="delivered"><%= houses[i].newspaper %></span>
-            <% }else{ %>
-            <span><%= houses[i].address %></span>
-            <span><%= houses[i].newspaper %></span>
+    <section class="container">
+        <h1>Paper Round</h1>
+        <p class="explanation">Paul does the local paper round and keeps forgetting what houses to deliver to. So Paul made this easy to paper round tracker.</p> 
+        <p class="explanation features">Paul can add, mark complete and re-add houses as well as keeping a tally of how many papers are left to be delivered.</p>
+        <h2 id="date"></h2>
+        <ul class="houseItems">
+            <% for(let i=0; i < houses.length; i++) {%>
+            <li class="house">
+                <% if(houses[i].delivered === true) {%>
+                    <span class="delivered"><%= houses[i].address %></span>
+                    <span class="delivered"><%= houses[i].newspaper %></span>
+                <% }else{ %>
+                <span><%= houses[i].address %></span>
+                <span><%= houses[i].newspaper %></span>
+                <% } %>
+                <span class='fa fa-trash'></span>
+            </li>   
             <% } %>
-            <span class='fa fa-trash'></span>
-        </li>   
-        <% } %>
-    </ul>
+        </ul>
 
-    <h2>Remaining Deliveries: <%= remainingDeliveries %></h2>
-    
-    <ul class="newspaperItems"> 
-    </ul>
+        <h2>Remaining Deliveries: <%= remainingDeliveries %></h2>
+        
+        <ul class="newspaperItems"> 
+        </ul>
 
-    <h3>Total Sunday Times papers:</h3>
+        <h3>Total Sunday Times papers:</h3>
 
-    <h2>Add a House: </h2>
-    <form action="/addHouse" method="POST">
-        <select class="newspapers"placeholder="Newspaper" name="paper">
-            <option value="The Sunday Times">The Sunday Times</option>
-            <option value="The Independent">The Independent</option>
-            <option value="Financial Times">Financial Times</option>
-            <option value="The Daily Telegraph">The Daily Telegraph</option>
-            <option value="The Times">The Times</option>
-            <option value="The Sun">The Sun</option>
-            <option value="The Guardian">The Guardian</option>
-            <option value="Daily Mirror">Daily Mirror</option>
-        </select>
-        <input type="text" placeholder="House Address" name="house">
-        <input type="submit">
-    </form>
+        <h2>Add a House: </h2>
+        <form action="/addHouse" method="POST">
+            <select class="newspapers"placeholder="Newspaper" name="paper">
+                <option value="The Sunday Times">The Sunday Times</option>
+                <option value="The Independent">The Independent</option>
+                <option value="Financial Times">Financial Times</option>
+                <option value="The Daily Telegraph">The Daily Telegraph</option>
+                <option value="The Times">The Times</option>
+                <option value="The Sun">The Sun</option>
+                <option value="The Guardian">The Guardian</option>
+                <option value="Daily Mirror">Daily Mirror</option>
+            </select>
+            <input type="text" placeholder="House Address" name="house">
+            <input type="submit">
+        </form>
+    </section>
 
 
     <script src="./js/main.js"></script>

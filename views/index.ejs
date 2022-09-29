@@ -14,8 +14,8 @@
 </head>
 <body>
     <section class="container">
-        <h1>Paper Round</h1>
-        <p class="explanation">Paul does the local paper round and keeps forgetting what houses to deliver to. So Paul made this easy to paper round tracker.</p> 
+        <h1>Paper Round Tracker</h1>
+        <p class="explanation">Paul does the local paper round and keeps forgetting what houses to deliver to. So Paul made this easy to use paper round tracker.</p> 
         <p class="explanation features">Paul can add, mark complete and re-add houses as well as keeping a tally of how many papers are left to be delivered.</p>
         <h2 id="date"></h2>
         <ul class="houseItems">
@@ -33,14 +33,14 @@
             <% } %>
         </ul>
 
-        <h2>Remaining Deliveries: <%= remainingDeliveries %></h2>
+        <h2 class="h2Spacing">Remaining Deliveries: <%= remainingDeliveries %></h2>
         
         <ul class="newspaperItems"> 
         </ul>
 
         <h3>Total Sunday Times papers:</h3>
 
-        <h2>Add a House: </h2>
+        <h2 class="h2Spacing">Add a House: </h2>
         <form action="/addHouse" method="POST">
             <select class="newspapers"placeholder="Newspaper" name="paper">
                 <option value="The Sunday Times">The Sunday Times</option>
@@ -53,7 +53,7 @@
                 <option value="Daily Mirror">Daily Mirror</option>
             </select>
             <input type="text" placeholder="House Address" name="house">
-            <input type="submit">
+            <input type="submit" value="Add Address">
         </form>
     </section>
 

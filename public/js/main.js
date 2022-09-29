@@ -51,9 +51,11 @@ async function markDelivered() {
         const data = await response.json()
         console.log(data)
         location.reload()
+        
     } catch(err){
         console.log(err)
     }
+    
 }
 
 async function markUnDelivered() {
@@ -96,3 +98,11 @@ function countPapers() {
 
 countPapers()
 
+// When address is marked as delivered make the li element turn dark grey
+function deliveredDark() {
+    paperDelivered.forEach(element => {
+        element.parentNode.style.backgroundColor = "rgb(100, 99, 99)"
+    })
+}
+
+deliveredDark()

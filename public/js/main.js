@@ -1,7 +1,8 @@
 const deleteBtn = document.querySelectorAll('.fa-trash')
 const house = document.querySelectorAll('.house span')
 const paperDelivered = document.querySelectorAll('span.delivered')
-const papers = [...document.querySelectorAll('.paper')]
+const papers = document.querySelectorAll('#newspaper')
+console.log(papers)
 
 // Updates h2 to todays date
 const date = document.querySelector('#date').innerText = new Date().toDateString()
@@ -77,23 +78,37 @@ async function markUnDelivered() {
     }
 }
 
+// Make a object from the newspapers list with a key of numbers starting from 0
+// if the newspaper is the same add 1 
+
 function countPapers() {
-    
-    const dataArr = []
-    for (let i = 0; i < papers.length; i++) {
-        dataArr.push(papers[i].innerText);
+    let result = [];
+    for (var i = 0; i < papers.length; i++) {
+        result.push({newspaper: papers[i].textContent});
     }
-    dataArr.reduce(function(a, b){
-        a[b] = a[b] + 1 || 1
+    console.log(result)
+
+
+    let finalResult = Object.values(result.reduce((a,{newspaper}) => {
+        let key = `${newspaper}`;
+        a[key] = a[key] || {newspaper, count : 0};
+        a[key].count++;
         return a;
-    }, {});
-    for (var c in dataArr) {
-        const spanLocation = document.querySelector('.newspaperItems')
-        const newElement = document.createElement('li');
-        newElement.id = dataArr[c]; newElement.className = "newspaper";
-        newElement.innerHTML = dataArr[c];
-        spanLocation.appendChild(newElement);
-    } 
+    }, {}));
+    console.log(finalResult)
+
+    finalResult.forEach(element => {
+        let liLocation = document.querySelector('.newspaperItems')
+        let li = document.createElement('li')
+        let spanPaper = document.createElement('span')
+        let spanCount = document.createElement('span')
+        li.appendChild(spanPaper)
+        li.appendChild(spanCount);
+        spanPaper.appendChild(document.createTextNode(element.newspaper));
+        spanCount.appendChild(document.createTextNode(element.count));
+        liLocation.appendChild(li);
+        
+    })
 }
 
 countPapers()

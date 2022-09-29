@@ -23,10 +23,10 @@
             <li class="house">
                 <% if(houses[i].delivered === true) {%>
                     <span class="delivered"><%= houses[i].address %></span>
-                    <span class="delivered"><%= houses[i].newspaper %></span>
+                    <span id="newspaper" class="delivered"><%= houses[i].newspaper %></span>
                 <% }else{ %>
                 <span><%= houses[i].address %></span>
-                <span><%= houses[i].newspaper %></span>
+                <span id="newspaper"><%= houses[i].newspaper %></span>
                 <% } %>
                 <span class='fa fa-trash'></span>
             </li>   
@@ -36,9 +36,9 @@
         <h2 class="h2Spacing">Remaining Deliveries: <%= remainingDeliveries %></h2>
         
         <ul class="newspaperItems"> 
+            
         </ul>
 
-        <h3>Total Sunday Times papers:</h3>
 
         <h2 class="h2Spacing">Add a House: </h2>
         <form action="/addHouse" method="POST">
@@ -52,7 +52,7 @@
                 <option value="The Guardian">The Guardian</option>
                 <option value="Daily Mirror">Daily Mirror</option>
             </select>
-            <input type="text" placeholder="House Address" name="house">
+            <input id="addressInput" type="text" placeholder="House Address" name="house">
             <input type="submit" value="Add Address">
         </form>
     </section>

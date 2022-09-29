@@ -65,3 +65,10 @@ select, input{
     margin: 0px 5px;
 }
 
+form {
+    margin-bottom: 100px;
+}
+
+#addressInput {
+    width: 30vw;
+}

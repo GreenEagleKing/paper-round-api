@@ -45,7 +45,11 @@ li span{
 }
 
 .h2Spacing{
-    margin-top: 40px;
+    margin: 35px 0px;
+}
+
+#remainingPaper{
+    margin-bottom: 20px;
 }
 
 .features {

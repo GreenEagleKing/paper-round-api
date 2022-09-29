@@ -2,7 +2,6 @@ const deleteBtn = document.querySelectorAll('.fa-trash')
 const house = document.querySelectorAll('.house span')
 const paperDelivered = document.querySelectorAll('span.delivered')
 const papers = document.querySelectorAll('#newspaper')
-console.log(papers)
 
 // Updates h2 to todays date
 const date = document.querySelector('#date').innerText = new Date().toDateString()
@@ -78,25 +77,27 @@ async function markUnDelivered() {
     }
 }
 
-// Make a object from the newspapers list with a key of numbers starting from 0
-// if the newspaper is the same add 1 
+
+// Counts publications yet to be delivered
 
 function countPapers() {
+    //creates object array for items not class as delivered
     let result = [];
     for (var i = 0; i < papers.length; i++) {
+        if (papers[i].classList == ""){
         result.push({newspaper: papers[i].textContent});
+        }
     }
-    console.log(result)
 
-
+    // Sums up duplicate newspapers
     let finalResult = Object.values(result.reduce((a,{newspaper}) => {
         let key = `${newspaper}`;
         a[key] = a[key] || {newspaper, count : 0};
         a[key].count++;
         return a;
     }, {}));
-    console.log(finalResult)
 
+    // Creates an element for each newspaper + the total of that newspaper
     finalResult.forEach(element => {
         let liLocation = document.querySelector('.newspaperItems')
         let li = document.createElement('li')

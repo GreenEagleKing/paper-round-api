@@ -3,7 +3,7 @@
 A helpful paper round tracker to keep track of houses which have had their papers delivered. The user can easily mark the address as delivered or undelivered as well as the option to delete or add a property. The app can also be helpful in the setting up for the paper round as it lists the total of each type of newspaper required on that paper round.
 
 <p align="center">
-  <img width="600" src="https://github.com/GreenEagleKing/fish-bar/blob/main/magna-fish-bar.gif?raw=true">
+  <img width="600" src="https://github.com/GreenEagleKing/paper-round-api/blob/main/img/paper-round-gif.gif?raw=true">
 </p>
 
 # How It's Made:

@@ -23,3 +23,4 @@ Tech used: CSS, EJS, JS, NODE, EXPRESS, MONGODB
 + Communication between server and database
 + Structure of a front to backend web application
 + Using HTML templating langauge to put the data on display
++ Implementing POST, PUT, GET & DELETE requests

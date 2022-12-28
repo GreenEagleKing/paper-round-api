@@ -18,7 +18,7 @@ Array.from(paperDelivered).forEach((element) => {
     element.addEventListener('click', markUnDelivered)
 })
 
-
+// Delete todo item
 async function deleteItem(){
     const addressText = this.parentNode.childNodes[1].innerText
     try{
@@ -38,6 +38,7 @@ async function deleteItem(){
     }
 }
 
+// Mark as delivered item
 async function markDelivered() {
     const addressText = this.parentNode.childNodes[1].innerText
     try{
@@ -58,6 +59,7 @@ async function markDelivered() {
     
 }
 
+// Mark as undelivered
 async function markUnDelivered() {
     const addressText = this.parentNode.childNodes[1].innerText
     try{

@@ -13,6 +13,9 @@ MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true})
     .then(client => {
         console.log(`Successfully connected to ${dbName} database`)
         db = client.db(dbName)
+        app.listen(process.env.PORT || PORT, () => {
+            console.log(`Server running on port ${PORT}`)
+        })
     })
 
 app.set('view engine', 'ejs')
@@ -81,3 +84,9 @@ app.put('/markUnDelivered', (request, response) => {
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
+
+
+// Copied for Cyclic hosting
+//app.listen(process.env.PORT || PORT, () => {
+//    console.log(`Server running on port ${PORT}`)
+//})
